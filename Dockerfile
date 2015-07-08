@@ -13,7 +13,7 @@ WORKDIR /home/jsreport
 
 ADD run.sh /home/jsreport/run.sh
 
-RUN sudo npm install jsreport
+RUN sudo npm install smtx/jsreport
 RUN sudo node node_modules/jsreport --init
 CMD ["bash", "/home/jsreport/run.sh"]
 
