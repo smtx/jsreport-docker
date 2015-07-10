@@ -1,6 +1,6 @@
 FROM node:0.10.33
 MAINTAINER Jan Blaha
-EXPOSE 2945 
+EXPOSE 2945
 
 RUN apt-get update && apt-get install -y sudo
 RUN adduser --disabled-password --gecos "" jsreport
@@ -11,9 +11,15 @@ VOLUME ["/jsreport"]
 
 WORKDIR /home/jsreport
 
+RUN sudo npm install smtx/jsreport
+
+WORKDIR /home/jsreport/node_modules/jsreport
+RUN npm install
+RUN npm install -g grunt-cli
+RUN grunt
+
 ADD run.sh /home/jsreport/run.sh
 
-RUN sudo npm install smtx/jsreport
+WORKDIR /home/jsreport
 RUN sudo node node_modules/jsreport --init
 CMD ["bash", "/home/jsreport/run.sh"]
-
