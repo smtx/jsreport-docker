@@ -1,4 +1,4 @@
-FROM node:0.10.33
+FROM node:latest
 MAINTAINER Jan Blaha
 EXPOSE 2945
 
@@ -11,7 +11,7 @@ VOLUME ["/jsreport"]
 
 WORKDIR /home/jsreport
 
-RUN sudo npm install smtx/jsreport
+RUN sudo npm install jsreport/jsreport
 
 WORKDIR /home/jsreport/node_modules/jsreport
 RUN npm install
