@@ -11,12 +11,12 @@ VOLUME ["/jsreport"]
 
 WORKDIR /home/jsreport
 
-RUN sudo npm install jsreport/jsreport
+RUN sudo npm install jsreport
 
-WORKDIR /home/jsreport/node_modules/jsreport
-RUN npm install
-RUN npm install -g grunt-cli
-RUN grunt
+# WORKDIR /home/jsreport/node_modules/jsreport
+# RUN npm install
+# RUN npm install -g grunt-cli
+# RUN grunt
 
 ADD run.sh /home/jsreport/run.sh
 
